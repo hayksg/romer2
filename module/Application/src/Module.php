@@ -15,4 +15,13 @@ class Module
     {
         return include __DIR__ . '/../config/module.config.php';
     }
+
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                'top_navigation' => Service\TopNavigationService::class,
+            ],
+        ];
+    }
 }

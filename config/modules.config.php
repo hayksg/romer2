@@ -6,11 +6,12 @@
  */
 
 /**
- * List of enabled modules for this application.
+ * List of enabled modules for this tutorial.
  *
- * This should be an array of module namespaces used in the application.
+ * This should be an array of module namespaces used in the tutorial.
  */
 return [
+    'Zend\Navigation',
     'Zend\ServiceManager\Di',
     'Zend\Session',
     'Zend\Mvc\Plugin\Prg',
@@ -25,4 +26,7 @@ return [
     'Zend\Router',
     'Zend\Validator',
     'Application',
+    'Tutorial',
+    'Blog',
+    'Admin',
 ];
