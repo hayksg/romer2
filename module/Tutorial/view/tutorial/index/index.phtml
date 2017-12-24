@@ -1,4 +1,37 @@
 <?php
+
+/*class A
+{
+    public function greeting()
+    {
+        return 'Hello to You';
+    }
+}
+
+class B
+{
+    public $a;
+
+    public function __construct(A $a)
+    {
+        $this->a = $a;
+    }
+}
+
+
+#$b = new B(new A);
+#echo $b->a->greeting();
+
+$di = new \Zend\Di\Di();
+$b = $di->get('B');
+echo $b->a->greeting();*/
+
+?>
+
+
+
+
+<?php
 $headTitle = 'Tutorial';
 $this->headTitle($headTitle);
 ?>
@@ -7,3 +40,4 @@ $this->headTitle($headTitle);
         <h3><?= $this->escapehtml($headTitle) ?></h3>
     </div>
 </div>
+<div><?= $this->escapeHtml($this->greetingService) ?></div>
