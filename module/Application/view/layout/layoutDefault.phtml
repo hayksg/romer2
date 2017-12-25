@@ -1,0 +1,61 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle() ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/cyborg-bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-3.2.1.min.js'))
+            ->prependFile($this->basePath('js/popper.min.js'))
+        ?>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+            <div class="container">
+                    <a class="navbar-brand <?php if ($this->headTitle()->renderTitle() === 'Home') { echo 'home-active'; } ?>" href="/">
+                        SiteName
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarColor03">
+                        <?= $this->navigation('top_navigation')
+                                 ->menu()
+                                 ->setUlClass('navbar-nav mr-auto')
+                                 ->setPartial('partial/topmenu')
+                                 ->render()
+                        ?>
+                    </div>
+
+            </div>
+        </nav>
+
+        <div class="container">
+            <?= $this->content ?>
+        </div>
+
+        <footer class="footer">
+            <hr>
+            <div class="container">
+                <p>&copy; <?= $this->getYear() ?> by PHP-User. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <?= $this->inlineScript() ?>
+    </body>
+</html>

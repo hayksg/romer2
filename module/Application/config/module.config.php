@@ -19,10 +19,10 @@ return [
                     ],
                 ],
             ],
-            'tutorial' => [
+            'tutorial-mod' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/tutorial[/:action]',
+                    'route'    => '/tutorial-mod[/:action]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
@@ -44,7 +44,7 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'        => __DIR__ . '/../view/layout/layout.phtml',
-            'tutorial/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'tutorial-mod/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'            => __DIR__ . '/../view/error/404.phtml',
             'error/index'          => __DIR__ . '/../view/error/index.phtml',
         ],

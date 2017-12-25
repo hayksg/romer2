@@ -1,0 +1,14 @@
+<?= $this->headScript()->prependScript('$(function(){$("ul.navbar-nav.mr-auto li").eq(0).addClass("active");});'); ?>
+<?php
+$headTitle = 'Edit product';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-sm-12">
+        <h3><?= $this->escapehtml($headTitle) ?></h3>
+    </div>
+</div>
+<form action="/tutorial/product/edit/12" method="post">
+    <input type="text" name="title">
+    <input type="submit" name="submit" value="Submit">
+</form>

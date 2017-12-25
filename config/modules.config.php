@@ -6,9 +6,9 @@
  */
 
 /**
- * List of enabled modules for this tutorial.
+ * List of enabled modules for this tutorial-mod.
  *
- * This should be an array of module namespaces used in the tutorial.
+ * This should be an array of module namespaces used in the tutorial-mod.
  */
 return [
     'Zend\Navigation',
@@ -29,4 +29,5 @@ return [
     'Tutorial',
     'Blog',
     'Admin',
+    //'TutorialMod',
 ];

@@ -10,12 +10,42 @@ return [
     'router' => [
         'routes' => [
             'tutorial' => [
-                'type' => Literal::class,
+                'type' => Segment::class,
                 'options' => [
                     'route'    => '/tutorial',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'sample' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/sample[/:action]',
+                            'constraints'    => [
+                                'action' => '[a-z]+',
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\SampleController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],
+                    'product' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/product[/:action][/:id]',
+                            'constraints'    => [
+                                'action' => '[a-z]+',
+                                'id'     => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\ProductController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -24,6 +54,8 @@ return [
     'controllers' => [
         'factories' => [
             //Controller\IndexController::class => InvokableFactory::class,
+            Controller\SampleController::class  => InvokableFactory::class,
+            Controller\ProductController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

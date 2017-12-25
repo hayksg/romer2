@@ -1,0 +1,15 @@
+<?= $this->headScript()->prependScript('$(function(){$("ul.navbar-nav.mr-auto li").eq(0).addClass("active");});'); ?>
+<?php
+$headTitle = 'Example';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-sm-6">
+        <h3><?= $this->escapehtml($headTitle) ?></h3>
+    </div>
+    <div class="col-sm-6">
+        <div class="text-right"><a href="/tutorial/sample" class="btn btn-default">Sample</a></div>
+    </div>
+</div>
+<div><?= $this->escapeHtml($this->url) ?></div>
+<div><?= $this->widget ?></div>
