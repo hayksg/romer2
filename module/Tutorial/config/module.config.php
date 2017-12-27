@@ -4,6 +4,8 @@ namespace Tutorial;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
+use Zend\Router\Http\Regex;
+use Zend\Router\Http\Method;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -33,7 +35,24 @@ return [
                             ],
                         ],
                     ],
-                    'product' => [
+
+                    /*'product' => [
+                        'type' => Regex::class,
+                        'options' => [
+                            'regex' => '/product(/(?<action>[a-z]+)(/(?<id>[0-9]+))?)?',
+                            'spec'  => "/product/%action%",
+                            'constraints'    => [
+                                'action' => '[a-z]+',
+                                'id'     => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'controller' => Controller\ProductController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],*/
+
+                    /*'product' => [
                         'type' => Segment::class,
                         'options' => [
                             'route'    => '/product[/:action][/:id]',
@@ -44,6 +63,78 @@ return [
                             'defaults' => [
                                 'controller' => Controller\ProductController::class,
                                 'action'     => 'index',
+                            ],
+                        ],
+                    ],*/
+
+                    'product' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/product',
+                            'defaults' => [
+                                'controller' => Controller\ProductController::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],
+
+                    'productActionAdd' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/product/add',
+                        ],
+                        'child_routes' => [
+                            'productAddGet' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'get',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'add',
+                                    ],
+                                ],
+                            ],
+                            'productAddPost' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'post',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'addPost',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+
+                    'productActionEdit' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/product/edit[/:id]',
+                            'constraints' => [
+                                'id' => '[0-9]+',
+                            ],
+                        ],
+                        'child_routes' => [
+                            'productEditGet' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'get',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'edit',
+                                    ],
+                                ],
+                            ],
+                            'productEditPost' => [
+                                'type' => Method::class,
+                                'options' => [
+                                    'verb'    => 'post',
+                                    'defaults' => [
+                                        'controller' => Controller\ProductController::class,
+                                        'action'     => 'editPost',
+                                    ],
+                                ],
                             ],
                         ],
                     ],

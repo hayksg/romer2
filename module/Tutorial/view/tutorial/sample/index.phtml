@@ -1,4 +1,84 @@
 <?= $this->headScript()->prependScript('$(function(){$("ul.navbar-nav.mr-auto li").eq(0).addClass("active");});'); ?>
+
+
+<?php
+
+$str = '';
+
+/*$stringLength = new \Zend\Validator\StringLength(['min' => 1, 'max' => 10]);
+$stringLength->setMessages([
+    \Zend\Validator\StringLength::TOO_SHORT => 'Too short',
+    \Zend\Validator\StringLength::TOO_LONG  => 'Too long',
+]);
+
+$alpha = new \Zend\Validator\NotEmpty();
+$alpha->setMessages([
+    \Zend\Validator\NotEmpty::IS_EMPTY => 'The value is empty',
+]);
+
+$validatorChain = new \Zend\Validator\ValidatorChain();
+$validatorChain->attach($stringLength);
+$validatorChain->attach($alpha);*/
+
+
+/*$validatorChain = new \Zend\Validator\ValidatorChain();
+$validatorChain->attachByName('StringLength', ['min' => 1, 'max' => 10]);
+$validatorChain->attachByName('NotEmpty');
+
+
+if ($validatorChain->isValid($str)) {
+    echo 'Ok';
+} else {
+    foreach ($validatorChain->getMessages() as $message) {
+        echo '<div>' . $message . '</div>';
+    }
+}
+
+echo '<hr>';*/
+
+$value = 'Hello';
+
+$floatValidator = new \Tutorial\Validator\FloatValidator();
+
+if ($floatValidator->isValid($value)) {
+    echo 'Ok';
+} else {
+    foreach ($floatValidator->getMessages() as $message) {
+        echo '<div>' . $message . '</div>';
+    }
+}
+
+echo '<hr>';
+
+?>
+
+<?php
+
+$string = '  <a href="#">Link</a>';
+
+/*$htmlEntities = new \Zend\Filter\HtmlEntities();
+$stringTrim = new \Zend\Filter\StringTrim();
+
+$filterChain = new \Zend\Filter\FilterChain();
+$filterChain->attach($htmlEntities);
+$filterChain->attach($stringTrim);*/
+
+/*$filterChain = new \Zend\Filter\FilterChain();
+$filterChain->attachByName('HtmlEntities');
+$filterChain->attachByName('StringTrim');
+
+$filteredString = $filterChain->filter($string);
+
+echo $filteredString;
+
+echo '<hr>';*/
+
+
+?>
+
+
+
+
 <?php
 $headTitle = 'Sample';
 $this->headTitle($headTitle);
